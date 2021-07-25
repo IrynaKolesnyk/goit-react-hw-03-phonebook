@@ -19,7 +19,6 @@ class ContactForm extends Component {
   handelFormSubmit = (event) => {
     const { name, number } = this.state;
     event.preventDefault();
-    console.log(this.state);
     this.props.onSubmit(name, number);
     this.setState({ name: "", number: "" });
   };
@@ -51,7 +50,7 @@ class ContactForm extends Component {
               name="number"
               value={this.state.number}
               pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-              title="Phone number can only contains digits, spaces, dashes, parentheses and can start with +"
+              title="Phone number can only contains digits (min 8 digits), spaces, dashes, parentheses and can start with +"
               required
               id={this.phoneId}
               onChange={this.handelInputChange}

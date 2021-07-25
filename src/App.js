@@ -17,8 +17,6 @@ class App extends Component {
 
   // contacts
   addContact = (text, value) => {
-    console.log(text);
-    console.log(value);
     const newContact = { id: uuidv4(), name: text, number: value };
     if (
       this.state.contacts
@@ -57,18 +55,15 @@ class App extends Component {
   // hw3
 
   componentDidMount() {
-    console.log("did mount");
     const contactsStorage = localStorage.getItem("contacts");
     const parseData = JSON.parse(contactsStorage);
     if (parseData) {
       this.setState({ contacts: parseData });
     }
-    console.log(parseData);
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (this.state.contacts !== prevState.contacts) {
-      console.log("updated");
       localStorage.setItem("contacts", JSON.stringify(this.state.contacts));
     }
   }
