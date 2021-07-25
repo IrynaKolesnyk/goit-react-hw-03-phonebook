@@ -16,7 +16,7 @@ const Filter = ({ filter, onChange }) => {
             required
             onChange={onChange}
             className="finde-input"
-            autocomplete="off"
+            autoComplete="off"
           />
         </label>
       </form>

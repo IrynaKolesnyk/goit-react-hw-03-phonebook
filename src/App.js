@@ -4,8 +4,6 @@ import ContactForm from "./components/ContactForm/ContactForm.jsx";
 import Filter from "./components/Filter/Filter.jsx";
 import ContactList from "./components/ContactList/ContactList.jsx";
 
-// uuidv4(); для уникальных ключей
-
 class App extends Component {
   state = {
     contacts: [
@@ -35,6 +33,8 @@ class App extends Component {
   };
 
   deleteContact = (contactId) => {
+    const warningMassege = window.confirm("Delete this contact?");
+    if (warningMassege === false) return;
     this.setState((prevState) => ({
       contacts: prevState.contacts.filter(
         (contact) => contact.id !== contactId
@@ -54,6 +54,25 @@ class App extends Component {
     );
   };
 
+  // hw3
+
+  componentDidMount() {
+    console.log("did mount");
+    const contactsStorage = localStorage.getItem("contacts");
+    const parseData = JSON.parse(contactsStorage);
+    if (parseData) {
+      this.setState({ contacts: parseData });
+    }
+    console.log(parseData);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.contacts !== prevState.contacts) {
+      console.log("updated");
+      localStorage.setItem("contacts", JSON.stringify(this.state.contacts));
+    }
+  }
+
   render() {
     const filterContacts = this.getVisibleContacts();
     return (
@@ -64,7 +83,6 @@ class App extends Component {
         <Filter filter={this.state.filter} onChange={this.changeFilter} />
         <ContactList
           contacts={filterContacts}
-          // contacts={this.state.contacts}
           deleteContact={this.deleteContact}
         />
       </div>

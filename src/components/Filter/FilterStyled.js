@@ -19,6 +19,7 @@ const FilterStyled = styled.div`
 
   input:focus {
     box-shadow: 1px 1px 2px 0 #12bcb0;
+    border: 1px solid #dbd9d9;
   }
 `;
 export default FilterStyled;

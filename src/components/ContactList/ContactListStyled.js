@@ -36,7 +36,7 @@ const ContactListStyled = styled.ul`
     font-weight: 700;
     &:hover,
     &:focus {
-      box-shadow: 1px 1px 2px 0 #0b2349;
+      box-shadow: 1px 1px 3px 0 #fc0202;
     }
   }
 `;
